@@ -6,8 +6,8 @@ from sqlalchemy import exc
 import os
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] =  os.environ.get('DATABASE_URL'
-'postgres:///flask-heroku') # 'postgresql:///bud' # create and change data base
+app.config['SQLALCHEMY_DATABASE_URI'] =   'postgresql:///bud' #os.environ.get('DATABASE_URL'
+#'postgres:///flask-heroku') # 'postgresql:///bud' # create and change data base
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
