@@ -16,8 +16,8 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'nevertell')
 connect_db(app)
 db.create_all()
 
-if __name__ == "__main__":
-    app.run(debug=True)
+# if __name__ == "__main__":
+#     app.run(debug=True)
 
 #from flask_debugtoolbar import DebugToolbarExtension
 app.config['SECRET_KEY'] = "SECRET!"
