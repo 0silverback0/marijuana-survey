@@ -7,7 +7,7 @@ import os
 
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL'
-'postgresql:///flask-heroku').replace("://", "ql://", 1) # 'postgresql:///bud' # create and change data base
+' postgres://sfrpajfxrpgyde:ab1f256cc03ff36c18aa155600b5b0664a666aa22ed0df1ed3d62b69b3fd29cd@ec2-44-199-143-43.compute-1.amazonaws.com:5432/df2lrblfv0qram') # 'postgresql:///bud' # create and change data base
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
