@@ -1,6 +1,4 @@
-from email.errors import StartBoundaryNotFoundDefect
-from flask import Flask, request, redirect, render_template, flash
-#from psycopg2 import IntegrityError
+from flask import Flask, redirect, render_template, flash
 from models import connect_db, db, User
 from forms import UserForm
 from sqlalchemy import exc 
@@ -16,17 +14,12 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'shh')
 connect_db(app)
 db.create_all()
 
-# if __name__ == "__main__":
-#     app.run(debug=True)
-
-#from flask_debugtoolbar import DebugToolbarExtension
 app.config['SECRET_KEY'] = "SECRET!"
-#debug = DebugToolbarExtension(app)
 
 @app.route('/', methods=['GET', 'POST'])
 def home():
     form = UserForm()
-    peeps = User.query.all()
+    users = User.query.all()
     email = form.email.data
     smoker = form.smoker.data
     started = form.started.data
@@ -45,7 +38,7 @@ def home():
             return redirect('/help')
 
     else:
-        return render_template('index.html', form=form, peeps=peeps)
+        return render_template('index.html', form=form, users=users)
 
 @app.route('/help')
 def help():
