@@ -7,7 +7,7 @@ from sqlalchemy import exc
 import os
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'postgres://efnmpsgaldqqgz:dc55aa481e7dfdad6b94314c5828c63fb6cb7c202cbc177add1b883234c6fc8f@ec2-3-218-171-44.compute-1.amazonaws.com:5432/d7gs1h2i8ph3h3').replace("postgres://", "postgresql://", 1) # 'postgresql:///bud' # create and change data base
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'postgres://pbjakybwgmhddz:75ebe26ecbb1d8139910f0ecacf69390279ddfac2ef975bfa506108b7ffef367@ec2-3-209-124-113.compute-1.amazonaws.com:5432/d4bndeqs143an3').replace("postgres://", "postgresql://", 1) or 'postgresql:///bud' # create and change data base
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
