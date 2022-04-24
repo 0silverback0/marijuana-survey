@@ -21,13 +21,14 @@
           {{ error }}
         {% endfor %}
       </p>
-
+    
     {% endfor %}
-    <button type="submit" class="btn btn-success btn-sm">Edit!</button>
+    
+    <button type="submit" class="btn btn-success btn-sm">Submit</button>
     </form>
     <ol>
     {% for peep in peeps %}
-    <li>{{peep.name}}</li>
+    <li>{{peep.email}}</li>
     {% endfor %}
     </ol>
 

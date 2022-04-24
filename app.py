@@ -1,3 +1,4 @@
+from email.errors import StartBoundaryNotFoundDefect
 from flask import Flask, request, redirect, render_template, flash
 #from psycopg2 import IntegrityError
 from models import connect_db, db, User
@@ -6,7 +7,7 @@ from sqlalchemy import exc
 import os
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL', 'postgres://efnmpsgaldqqgz:dc55aa481e7dfdad6b94314c5828c63fb6cb7c202cbc177add1b883234c6fc8f@ec2-3-218-171-44.compute-1.amazonaws.com:5432/d7gs1h2i8ph3h3').replace("postgres://", "postgresql://", 1) # 'postgresql:///bud' # create and change data base
+app.config['SQLALCHEMY_DATABASE_URI'] =  'postgresql:///bud' or os.environ.get('DATABASE_URL', 'postgres://efnmpsgaldqqgz:dc55aa481e7dfdad6b94314c5828c63fb6cb7c202cbc177add1b883234c6fc8f@ec2-3-218-171-44.compute-1.amazonaws.com:5432/d7gs1h2i8ph3h3').replace("postgres://", "postgresql://", 1) # 'postgresql:///bud' # create and change data base
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALCHEMY_ECHO'] = True
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
@@ -26,10 +27,16 @@ app.config['SECRET_KEY'] = "SECRET!"
 def home():
     form = UserForm()
     peeps = User.query.all()
-    name = form.name.data
-    ans = form.qs.data
+    email = form.email.data
+    smoker = form.smoker.data
+    started = form.started.data
+    frequency = form.frequency.data
+    reason = form.reason.data
+    condition = form.condition.data
+    type = form.type.data
     if form.validate_on_submit():
-        new_guy = User(name=name, ans=ans)
+        new_guy = User(email=email, smoker=smoker, started=started, frequency=frequency, reason=reason,
+        condition=condition, type=type)
         try:  
             db.session.add(new_guy)
             db.session.commit()
