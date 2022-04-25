@@ -8,10 +8,13 @@
     integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 </head>
 <body>
+
   <header class="bg-success text-center">
     <h1>Marijuana Smokers Survey</h1>
     <span>{{users|length}} people have taken this survey.</span>
   </header>
+
+  {% block content %}
 
   <div class="container">
 
@@ -36,6 +39,9 @@
     </form>
     
   </div>
+
+  {% endblock %}
+
   <footer class="bg-secondary">
     <p class="text-center">Marijuana Smokers Survey 2022</p>
   </footer>

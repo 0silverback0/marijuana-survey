@@ -20,6 +20,7 @@ app.config['SECRET_KEY'] = "SECRET!"
 def home():
     form = UserForm()
     users = User.query.all()
+
     email = form.email.data
     smoker = form.smoker.data
     started = form.started.data
@@ -27,19 +28,22 @@ def home():
     reason = form.reason.data
     condition = form.condition.data
     type = form.type.data
+
     if form.validate_on_submit():
-        new_guy = User(email=email, smoker=smoker, started=started, frequency=frequency, reason=reason,
+        survey_taker = User(email=email, smoker=smoker, started=started, frequency=frequency, reason=reason,
         condition=condition, type=type)
         try:  
-            db.session.add(new_guy)
+            db.session.add(survey_taker)
             db.session.commit()
-            return redirect('/')
+            return redirect('/complete')
         except exc.IntegrityError:
-            return redirect('/help')
+            flash('You have already taken this survey.')
+            return redirect('/complete')
 
     else:
         return render_template('index.html', form=form, users=users)
 
-@app.route('/help')
-def help():
-    return 'hlp me!'
+@app.route('/complete')
+def complete():
+    users = User.query.all()
+    return render_template('complete.html', users=users)

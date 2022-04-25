@@ -1,0 +1,12 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<p class="text-center mt-3">Survey complete. Thank you!</p>
+
+{% for message in get_flashed_messages() %}
+  <div class="m-3 bg-primary text-center">{{ message }}</div>
+{% endfor %}
+
+{% endblock %}
+
