@@ -7,7 +7,7 @@ class UserForm(FlaskForm):
     smoker = RadioField('Social or Lone smoker', choices=[ ('Social smoker', 'Social smoker'), ('Lone smoker', 'Lone smoker'), ('Either', 'Either')], validators=[DataRequired()])
     started = RadioField('Age you started', choices=[ ('16 or younger', '16 or younger'), ('17 -25', '17 - 25'),
     ('26 - 35', '26 - 35'), ('35 or older', '35 or older')], validators=[DataRequired()])
-    frequency = RadioField('How often?', choices=[ ('A few times per year', 'A few times per year'), ('A few times per month', 'A few times per month'),
+    frequency = RadioField('How often', choices=[ ('A few times per year', 'A few times per year'), ('A few times per month', 'A few times per month'),
     ('Afew times per week', 'A few times per week'), ('Daily', 'Daily')], validators=[DataRequired()])
     reason = RadioField('Reason', choices= ['Recreational', 'Medical'], validators=[DataRequired()])
     condition = StringField('Condition ie: pain, anxiety etc..')
